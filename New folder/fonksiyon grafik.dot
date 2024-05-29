@@ -1,0 +1,47 @@
+digraph fonksiyon_cagri_grafiği {
+  extract_mfcc -> librosa_load;
+  extract_mfcc -> np_mean;
+  extract_mfcc -> librosa_feature_mfcc;
+  extract_mfcc -> plt_figure;
+  extract_mfcc -> plt_hist;
+  extract_mfcc -> plt_title;
+  extract_mfcc -> plt_xlabel;
+  extract_mfcc -> plt_ylabel;
+  extract_mfcc -> plt_savefig;
+  extract_mfcc -> plt_close;
+
+  train_model -> os_listdir;
+  train_model -> os_path_isdir;
+  train_model -> os_path_join;
+  train_model -> extract_mfcc;
+  train_model -> train_test_split;
+  train_model -> SVC;
+  train_model -> svm_model_fit;
+  train_model -> svm_model_predict;
+  train_model -> accuracy_score;
+  train_model -> classification_report;
+  train_model -> messagebox_showinfo;
+
+  transcribe_audio -> sr_Recognizer;
+  transcribe_audio -> sr_AudioFile;
+  transcribe_audio -> r_record;
+  transcribe_audio -> r_recognize_google;
+
+  count_words -> text_split;
+
+  App_train_model -> train_model;
+  App_train_model -> messagebox_showinfo;
+  App_start_recording -> threading_Thread;
+  App_record -> self_stream_read;
+  App_stop_recording -> self_stream_stop_stream;
+  App_stop_recording -> self_stream_close;
+  App_stop_recording -> wave_open;
+  App_stop_recording -> messagebox_showinfo;
+  App_analyze_recording -> extract_mfcc;
+  App_analyze_recording -> svm_model_predict;
+  App_analyze_recording -> transcribe_audio;
+  App_analyze_recording -> threading_Thread;
+  App_count_and_display_words -> count_words;
+  App_predict_speaker -> extract_mfcc;
+  App_predict_speaker -> svm_model_predict;
+}
